@@ -50,32 +50,36 @@ function App() {
       <div className='Page'>
         <ThemeProvider theme={theme}>
           <div style={{ display: 'block', margin: '5%', }}>
-            <img src={title} style={{ width: '30%', marginBottom: "2rem"}} />
-            <span style={{ display: 'flex', marginBottom: '50px' }}>
+            <img src={title} className="Header" style={{ width: '28%', marginBottom: "2rem" }} />
+            <span className='Plexie'>
               <img src={plexie} style={{ width: '20%', marginRight: "5rem", }} />
               <p style={{ minHeight: '10%' }} className="Response" >{response}</p>
             </span>
-            <span className="Input">
-              <Input value={prompt} style={{ width: "28%" }} onChange={(event) => setPrompt(event.target.value)}></Input>
-              <Button
-                variant="contained"
-                color="neutral"
-                fontWeight="Bold"
-                onClick={makeRequest}
-                style={{ "marginLeft": "1rem" }}
-              >Ask Plexie</Button>
-              <Button
-                variant="contained"
-                color="neutral"
-                fontWeight="Bold"
-                onClick={() => {
-                  setPrompt("");
-                  setResponse("");
-                  setPlexie(PlexieRegular);
-                }}
-                style={{ "marginLeft": "1rem" }}
-              >Clear</Button>
-            </span>
+            <div className="Input">
+              <span className="PromptAction">
+                <Input value={prompt} className="InputPrompt" onChange={(event) => setPrompt(event.target.value)}></Input>
+                <Button
+                  variant="contained"
+                  color="neutral"
+                  fontWeight="Bold"
+                  onClick={makeRequest}
+                  style={{ "marginLeft": "1rem" }}
+                >Ask Plexie</Button>
+              </span>
+              <span className="Clear">
+                <Button
+                  variant="contained"
+                  color="neutral"
+                  fontWeight="Bold"
+                  onClick={() => {
+                    setPrompt("");
+                    setResponse("");
+                    setPlexie(PlexieRegular);
+                  }}
+                  style={{ "marginLeft": "1rem" }}
+                >Clear</Button>
+              </span>
+            </div>
           </div>
         </ThemeProvider>
       </div>
