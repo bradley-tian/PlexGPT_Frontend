@@ -26,28 +26,32 @@ html {
   margin-bottom: 1rem;
 }
 
+.Input {
+  border-radius: 1rem;
+  background-color: #FFEFDA;
+  opacity: 1;
+  padding: 1.5rem;
+}
+
 @media (min-width: 1200px) {
-  
+
   .Input {
     padding: 1.5rem;
     height: min-content;
     width: 57%;
-    border-radius: 1rem;
-    background-color: #FFEFDA;
-    opacity: 1;
     display: flex;
   }
-  
+
   .Header {
     width: 30%;
     margin-bottom: 2rem;
   }
-  
+
   .Plexie {
     display: flex;
     margin-bottom: 50px;
   }
-  
+
   .InputPrompt {
     width: 25rem;
   }
@@ -72,7 +76,7 @@ html {
     width: 100%;
     margin-bottom: 1rem;
   }
-  
+
   .Header {
     display: block;
   }
