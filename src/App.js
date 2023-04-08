@@ -63,7 +63,6 @@ function App() {
                   color="neutral"
                   fontWeight="Bold"
                   onClick={makeRequest}
-                  style={{ "marginLeft": "1rem" }}
                 >Ask Plexie</Button>
               </span>
               <span className="Clear">
@@ -76,7 +75,6 @@ function App() {
                     setResponse("");
                     setPlexie(PlexieRegular);
                   }}
-                  style={{ "marginLeft": "1rem" }}
                 >Clear</Button>
               </span>
             </div>
