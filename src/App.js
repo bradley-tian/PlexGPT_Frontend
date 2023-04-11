@@ -27,7 +27,7 @@ function App() {
     },
   });
 
-  const [prompt, setPrompt] = useState("Hello!");
+  const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
   const [plexie, setPlexie] = useState(PlexieRegular);
   const current = new Date();
@@ -51,7 +51,13 @@ function App() {
       return;
     }
     setProcessing(true);
-    let URL = `${process.env.REACT_APP_BACKEND_URL}text_completion/${prompt}`
+
+    let URL = "";
+    if (prompt === "") {
+      URL = `${process.env.REACT_APP_BACKEND_URL}text_completion/Hello!`
+    } else {
+      URL = `${process.env.REACT_APP_BACKEND_URL}text_completion/${prompt}`
+    }
     console.log(URL);
     setPlexie(PlexieThinking);
     await fetch(URL, {
