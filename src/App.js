@@ -27,7 +27,7 @@ function App() {
     },
   });
 
-  const [prompt, setPrompt] = useState("");
+  const [prompt, setPrompt] = useState("Hello!");
   const [response, setResponse] = useState("");
   const [plexie, setPlexie] = useState(PlexieRegular);
   const current = new Date();
