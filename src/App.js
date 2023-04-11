@@ -36,12 +36,14 @@ function App() {
   let time = current.getHours();
   let timeChoice = "";
 
-  if (time < 12) {
-    timeChoice = "morning";
+  if (time < 6) {
+    timeChoice = "It's late at night! Please remember to sleep well."
+  } else if (time > 5 && time < 12) {
+    timeChoice = "Good morning!";
   } else if (time > 12 && time < 17) {
-    timeChoice = "afternoon";
+    timeChoice = "Good afternoon!";
   } else {
-    timeChoice = "evening";
+    timeChoice = "Good evening!";
   }
 
   async function makeRequest() {
@@ -80,7 +82,7 @@ function App() {
             </span>
 
             <div className="Interact">
-              <Typography variant="h6" className="Prompt" id="Intro">Good {timeChoice}! What's on your mind today? Let me know!</Typography>
+              <Typography variant="h6" className="Prompt" id="Intro">{timeChoice} What's on your mind? Let me know!</Typography>
               <div className="Input">
                 <span className="PromptAction">
                   <Input value={prompt} className="InputPrompt" onChange={(event) => setPrompt(event.target.value)}></Input>
