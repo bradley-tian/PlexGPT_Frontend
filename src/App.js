@@ -31,6 +31,8 @@ function App() {
   const [response, setResponse] = useState("");
   const [plexie, setPlexie] = useState(PlexieRegular);
   const current = new Date();
+  const [processing, setProcessing] = useState(false);
+
   let time = current.getHours();
   let timeChoice = "";
 
@@ -43,6 +45,10 @@ function App() {
   }
 
   async function makeRequest() {
+    if (processing) {
+      return;
+    }
+    setProcessing(true);
     let URL = `${process.env.REACT_APP_BACKEND_URL}text_completion/${prompt}`
     console.log(URL);
     setPlexie(PlexieThinking);
@@ -54,6 +60,7 @@ function App() {
         setPlexie(PlexieResponding)
         let trimmed = data.answer.content.charAt(0) === '?' ? data.answer.content.slice(3) : data.answer.content
         setResponse(trimmed)
+        setProcessing(false);
       })
   }
 
