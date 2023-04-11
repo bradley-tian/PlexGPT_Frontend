@@ -8,6 +8,7 @@ import title from "./PlexGPT.png";
 import PlexieRegular from "./PRegular.png";
 import PlexieThinking from "./PThinking.png";
 import PlexieResponding from "./PRespond.png";
+import Typography from '@mui/material/Typography';
 
 function App() {
 
@@ -29,6 +30,17 @@ function App() {
   const [prompt, setPrompt] = useState("");
   const [response, setResponse] = useState("");
   const [plexie, setPlexie] = useState(PlexieRegular);
+  const current = new Date();
+  let time = current.getHours();
+  let timeChoice = "";
+
+  if (time < 12) {
+    timeChoice = "morning";
+  } else if (time > 12 && time < 17) {
+    timeChoice = "afternoon";
+  } else {
+    timeChoice = "evening";
+  }
 
   async function makeRequest() {
     let URL = `${process.env.REACT_APP_BACKEND_URL}text_completion/${prompt}`
@@ -45,38 +57,46 @@ function App() {
       })
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
     <>
       <div className='Page'>
         <ThemeProvider theme={theme}>
-          <div style={{ display: 'block', margin: '5%', }}>
+          <div style={{ display: 'block', margin: '5%', marginTop: '2%' }}>
             <img src={title} className="Header" style={{ width: '28%', marginBottom: "2rem" }} />
             <span className='Plexie'>
               <img src={plexie} style={{ width: '20%', marginRight: "5rem", }} />
-              <p style={{ minHeight: '10%' }} className="Response" >{response}</p>
+              <Typography variant="h5" style={{ minHeight: '10%' }} className="Prompt" >{response}</Typography>
             </span>
-            <div className="Input">
-              <span className="PromptAction">
-                <Input value={prompt} className="InputPrompt" onChange={(event) => setPrompt(event.target.value)}></Input>
-                <Button
-                  variant="contained"
-                  color="neutral"
-                  fontWeight="Bold"
-                  onClick={makeRequest}
-                >Ask Plexie</Button>
-              </span>
-              <span className="Clear">
-                <Button
-                  variant="contained"
-                  color="neutral"
-                  fontWeight="Bold"
-                  onClick={() => {
-                    setPrompt("");
-                    setResponse("");
-                    setPlexie(PlexieRegular);
-                  }}
-                >Clear</Button>
-              </span>
+
+            <div className="Interact">
+              <Typography variant="h6" className="Prompt" id="Intro">Good {timeChoice}! What's on your mind today? Let me know!</Typography>
+              <div className="Input">
+                <span className="PromptAction">
+                  <Input value={prompt} className="InputPrompt" onChange={(event) => setPrompt(event.target.value)}></Input>
+                  <Button
+                    variant="contained"
+                    color="neutral"
+                    fontWeight="Bold"
+                    onClick={makeRequest}
+                  >Ask Plexie</Button>
+                </span>
+                <span className="Clear">
+                  <Button
+                    variant="contained"
+                    color="neutral"
+                    fontWeight="Bold"
+                    onClick={() => {
+                      setPrompt("");
+                      setResponse("");
+                      setPlexie(PlexieRegular);
+                    }}
+                  >Clear</Button>
+                </span>
+              </div>
             </div>
           </div>
         </ThemeProvider>
