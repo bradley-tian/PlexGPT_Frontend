@@ -36,7 +36,7 @@ function App() {
   let time = current.getHours();
   let timeChoice = "";
 
-  if (time < 6) {
+  if (time < 5) {
     timeChoice = "It's late at night! Please remember to sleep well."
   } else if (time > 5 && time < 12) {
     timeChoice = "Good morning!";
