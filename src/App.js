@@ -38,9 +38,9 @@ function App() {
 
   if (time < 5) {
     timeChoice = "It's late at night! Please remember to sleep well."
-  } else if (time > 5 && time < 12) {
+  } else if (time >= 5 && time < 12) {
     timeChoice = "Good morning!";
-  } else if (time > 12 && time < 17) {
+  } else if (time >= 12 && time < 17) {
     timeChoice = "Good afternoon!";
   } else {
     timeChoice = "Good evening!";
