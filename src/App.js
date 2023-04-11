@@ -91,7 +91,7 @@ function App() {
               <Typography variant="h6" className="Prompt" id="Intro">{timeChoice} What's on your mind? Let me know!</Typography>
               <div className="Input">
                 <span className="PromptAction">
-                  <Input value={prompt} className="InputPrompt" onChange={(event) => setPrompt(event.target.value)}></Input>
+                  <Input value={prompt} className="InputPrompt" placeholder="Please type here" onChange={(event) => setPrompt(event.target.value)}></Input>
                   <Button
                     variant="contained"
                     color="neutral"
