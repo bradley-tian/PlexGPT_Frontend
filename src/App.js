@@ -88,10 +88,17 @@ function App() {
 
   function calculate(m1, m2, goal, curve) {
     const sdMap = {
+      "A+": 1.87,
       "A": 0.7,
       "A-": 0.13,
       "B+": -0.3,
+      "B": -0.61,
+      "B-": -1.05,
+      "C+": -1.20,
+      "C": -1.36,
+      "C-": -1.79,
     }
+
     let c = curves1;
     if (curve === 2) {
       c = curves2;
@@ -161,9 +168,15 @@ function App() {
                     style={{ display: "flex", width: "50%", marginBottom: "20px" }}
                     onChange={(event) => setSelectGoal(event.target.value)}
                   >
+                    <MenuItem value={"A+"}>A+</MenuItem>
                     <MenuItem value={"A"}>A</MenuItem>
                     <MenuItem value={"A-"}>A-</MenuItem>
                     <MenuItem value={"B+"}>B+</MenuItem>
+                    <MenuItem value={"B"}>B</MenuItem>
+                    <MenuItem value={"B-"}>B-</MenuItem>
+                    <MenuItem value={"C+"}>C+</MenuItem>
+                    <MenuItem value={"C"}>C</MenuItem>
+                    <MenuItem value={"C-"}>C-</MenuItem>
                   </Select>
                   <div style={{ display: "block" }}>
                     <div style={{ marginBottom: "25px" }}>
@@ -192,9 +205,10 @@ function App() {
                       fontWeight="Bold"
                       onClick={() => setNeeded(calculate(m1, m2, selectGoal, curveChoice))}
                       style={{ marginBottom: "20px" }}>Calculate</Button>
-                    {needed ? <Typography variant="h6" className="Prompt" id="Intro" style={{paddingBottom: "50px"}}>You will need an SD of {needed.toFixed(2)} on your final to get {selectGoal} in CS170.</Typography>
+                    {needed ? <Typography variant="h6" className="Prompt" id="Intro" style={{paddingBottom: "20px"}}>You will need an SD of {needed.toFixed(2)} on your final to get {selectGoal} in CS170.</Typography>
                       : <></>}
                   </span>
+                  <Typography variant="p" className="Prompt" id="Intro" style={{paddingBottom: "50px"}}>Sources: Berkeleytime (Prof. Raghavendra's SP22 distribution), z-score table from www.z-table.com</Typography>
                 </div>
                 : <></>
               }
