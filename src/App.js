@@ -153,7 +153,7 @@ function App() {
                 }>CS170 Final Grade Calculator</Button>
               {activate === 1 ?
                 <div>
-                  <Typography variant="h6" className="Prompt" id="Intro">This is a calculator to estimate the SD you will need on the CS170 to get your desired grade in the class. All statistics are based off Professor Raghavendra's grading history and tailored for Spring 2023.</Typography>
+                  <Typography variant="h6" className="Prompt" id="Intro">This is a calculator to estimate the SD you will need on the CS170 final to get your desired grade in the class. All statistics are based on Professor Raghavendra's grading history and tailored for Spring 2023. Please note that if your homework category is lower than 100%, you will need to additionally factor that in on top of the projected result.</Typography>
                   <InputLabel id="desired">What is your desired grade in CS170?</InputLabel>
                   <Select
                     labelId="desired"
@@ -192,7 +192,7 @@ function App() {
                       fontWeight="Bold"
                       onClick={() => setNeeded(calculate(m1, m2, selectGoal, curveChoice))}
                       style={{ marginBottom: "20px" }}>Calculate</Button>
-                    {needed ? <Typography variant="h6" className="Prompt" id="Intro">You will need an SD of {needed.toFixed(2)} on your final to get {selectGoal} in CS170.</Typography>
+                    {needed ? <Typography variant="h6" className="Prompt" id="Intro" style={{paddingBottom: "50px"}}>You will need an SD of {needed.toFixed(2)} on your final to get {selectGoal} in CS170.</Typography>
                       : <></>}
                   </span>
                 </div>
