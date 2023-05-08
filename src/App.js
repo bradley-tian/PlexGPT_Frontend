@@ -3,12 +3,13 @@
 import { useState, useEffect } from 'react';
 import { Button, Input, Select, MenuItem, InputLabel } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import './App.css';
-import title from "./PlexGPT.png";
-import PlexieRegular from "./PRegular.png";
-import PlexieThinking from "./PThinking.png";
-import PlexieResponding from "./PRespond.png";
 import Typography from '@mui/material/Typography';
+import './App.css';
+import title from "./assets/PlexGPT.png";
+import PlexieRegular from "./assets/PRegular.png";
+import PlexieThinking from "./assets/PThinking.png";
+import PlexieResponding from "./assets/PRespond.png";
+import PlexieError from "./assets/PError.png";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
   const [plexie, setPlexie] = useState(PlexieRegular);
   const current = new Date();
   const [processing, setProcessing] = useState(false);
+  const errorMsg = "I'm sorry - I am not able to respond to your message at this time. My sincere apologies for the inconvenience."
 
   let time = current.getHours();
   let timeChoice = "";
@@ -65,9 +67,18 @@ function App() {
     })
       .then(response => response.json())
       .then(data => {
-        setPlexie(PlexieResponding)
+        if (data.answer.content.includes("sorry") || data.answer.content.includes("cannot")) {
+          setPlexie(PlexieError);
+        } else {
+          setPlexie(PlexieResponding);
+        }
         let trimmed = data.answer.content.charAt(0) === '?' ? data.answer.content.slice(3) : data.answer.content
         setResponse(trimmed)
+        setProcessing(false);
+      })
+      .catch((error) => {
+        setPlexie(PlexieError);
+        setResponse(errorMsg);
         setProcessing(false);
       })
   }
