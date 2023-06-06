@@ -115,7 +115,7 @@ function SourcingTool() {
                                     {processing ? <Typography variant="p">Please wait...</Typography> : <></>}
                                 </div>
                                 {response[0] === errorMsg || response.length === 0 ? <></> : <Typography variant="h6">Here are some possibly valid email addresses:<br /></Typography>}
-                                {response.map((email) => <Typography variant="p">{email}<br /></Typography>)}
+                                {response.length === 0 ? <Typography variant="p">I'm sorry, I couldn't find any email addresses for this person.</Typography> : response.map((email) => <Typography variant="p">{email}<br /></Typography>)}
                             </div>
                         </span>
                     </div>
