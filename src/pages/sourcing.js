@@ -62,7 +62,7 @@ function SourcingTool() {
             .then(data => {
                 if (data.length === 0) {
                     setPlexie(PlexieError);
-                    setResponse(errorMsg);
+                    setResponse([errorMsg]);
                     setProcessing(false);
                     searched = true;
                 }
