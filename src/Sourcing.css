@@ -20,38 +20,37 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-image: url("./assets/Heart_Background.png");
 }
 
-.Prompt {
-  padding: 1rem;
-  height: min-content;
-  border-radius: 1rem;
-  background-color: #FFFDFA;
-  opacity: 0.85;
-  margin-bottom: 1rem;
+#ToolPrompt {
+  width: max-content;
+  height: max-content;
+  display: inline-flex;
 }
 
-#Response {
-  border-style: solid;
-  border-color: #ff8a00;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+#PlexieImg {
+  width: 35vh;
+  height: 50vh;
+  margin-right: 5rem;
 }
 
-.Interact {
+#Container {
+  margin: 3rem;
+}
+
+.TextSpace {
   border-radius: 1rem;
   background-color: #FFEFDA;
   opacity: 1;
   padding: 1.5rem;
+  margin-top: 2rem;
+  max-width: 35vw;
 }
 
-#Intro {
-  margin-bottom: 10px;
-  max-width: max-content;
-}
-
-#Clear {
-  margin-left: 15px;
+#EmailPrompt {
+  height: max-content;
+  width: max-content;
 }
 
 #Footer {
@@ -65,10 +64,6 @@ body {
 }
 
 @media (min-width: 1200px) {
-
-  .Page {
-    background-image: url("./assets/Heart_Background.png");
-  }
 
   .Input {
     padding: 25px;
@@ -88,10 +83,10 @@ body {
   }
 
   .InputPrompt {
-    min-width: 30vw;
-    margin-right: 1rem;
+    width: 40%;
+    margin-right: 10%;
   }
-
+  
   #PromptAction {
     display: flex;
     margin-right: 1rem;
@@ -99,12 +94,6 @@ body {
 
   .Interact {
     width: 62%;
-  }
-
-  #PlexieImg {
-    width: 20%;
-    height: 100%;
-    margin-right: 5rem;
   }
 
   #Intro {
@@ -130,13 +119,13 @@ body {
     margin-bottom: 1rem;
   }
 
+  .LongInput {
+    width: 100%;
+    margin-right: 1rem;
+  }
+
   .Header {
     width: 80%;
     display: block;
-  }
-
-  #PlexieImg {
-    width: 45%;
-    height: 45%;
   }
 }
