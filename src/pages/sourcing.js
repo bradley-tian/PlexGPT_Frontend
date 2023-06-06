@@ -60,6 +60,7 @@ function SourcingTool() {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 if (data.length === 0) {
                     setPlexie(PlexieError);
                     setResponse([errorMsg]);
@@ -75,6 +76,7 @@ function SourcingTool() {
 
             })
             .catch((error) => {
+                console.log("Error");
                 setPlexie(PlexieError);
                 setResponse([errorMsg]);
                 setProcessing(false);
@@ -119,7 +121,7 @@ function SourcingTool() {
                                     {processing ? <Typography variant="p">Please wait...</Typography> : <></>}
                                 </div>
                                 {response[0] === errorMsg || response.length === 0 ? <></> : <Typography variant="h6">Here are some possibly valid email addresses:<br /></Typography>}
-                                {response.length !== 0 ? response.map((email) => <Typography variant="p">{email}<br /></Typography>) : <></>}
+                                {Array.isArray(response) && response.length !== 0 ? response.map((email) => <Typography variant="p">{email}<br /></Typography>) : <></>}
                             </div>
                         </span>
                     </div>
