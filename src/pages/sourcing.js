@@ -92,7 +92,7 @@ function SourcingTool() {
                                 <div style={{ marginTop: "2rem" }}>
                                     <Input value={first} className="InputPrompt" placeholder="First Name" onChange={(event) => setFirst(event.target.value)}></Input>
                                     <Input value={last} className="InputPrompt" placeholder="Last Name" onChange={(event) => setLast(event.target.value)}></Input>
-                                    <Input value={domain} className="InputPrompt" placeholder="Domain (Ex: google, zendesk)" onChange={(event) => setDomain(event.target.value)}></Input>
+                                    <Input value={domain} className="InputPrompt" placeholder="Domain (Ex: for @zendesk.com, just put zendesk)" onChange={(event) => setDomain(event.target.value)}></Input>
                                 </div>
 
                                 <div style={{ marginTop: "2rem", marginBottom: "2rem" }}>
