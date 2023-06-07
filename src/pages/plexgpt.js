@@ -10,6 +10,7 @@ import PlexieRegular from "../assets/PRegular.png";
 import PlexieThinking from "../assets/PThinking.png";
 import PlexieResponding from "../assets/PRespond.png";
 import PlexieError from "../assets/PError.png";
+import PlexieCool from "../assets/PCool.png";
 
 function PlexGPT() {
 
@@ -72,9 +73,13 @@ function PlexGPT() {
                 if (data.answer.content.includes("sorry") || data.answer.content.includes("cannot")) {
                     setPlexie(PlexieError);
                 } else {
-                    setPlexie(PlexieResponding);
+                    if (data.indicator < 0.9) {
+                        setPlexie(PlexieResponding);
+                    } else {
+                        setPlexie(PlexieCool);
+                    }
                 }
-                let trimmed = data.answer.content.charAt(0) in [" ", ",", "?"] ? data.answer.content.slice(2) : data.answer.content
+                let trimmed = [" ", ",", "?"].includes(data.answer.content.charAt(0)) ? data.answer.content.slice(2) : data.answer.content
                 setResponse(trimmed)
                 setProcessing(false);
             })
