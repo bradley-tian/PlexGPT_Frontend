@@ -75,6 +75,7 @@ function PlexGPT() {
                     setPlexie(PlexieResponding);
                 }
                 let trimmed = data.answer.content.charAt(0) === '?' ? data.answer.content.slice(3) : data.answer.content
+                trimmed = data.answer.content.charAt(0) === ',' ? data.answer.content.slice(2) : data.answer.content
                 setResponse(trimmed)
                 setProcessing(false);
             })
@@ -99,17 +100,16 @@ function PlexGPT() {
                             <img src={plexie} id="PlexieImg" />
                             <div>
                                 <Typography variant="h5" style={{ minHeight: '10%' }} className="Prompt" id={response ? "Response" : ""}>{response}</Typography>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    fontWeight="Bold"
-                                    onClick={() => {
-                                        navigate('/sourcing-tool');
-                                    }}
-                                >Sourcing Tool</Button>
                             </div>
-
                         </span>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            fontWeight="Bold"
+                            onClick={() => {
+                                navigate('/sourcing-tool');
+                            }}
+                        >Sourcing Tool (PC Only)</Button>
 
                         <div className="Interact">
                             <Typography variant="h6" className="Prompt" id="Intro">{timeChoice} What's on your mind? Let me know!</Typography>

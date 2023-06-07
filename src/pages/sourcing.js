@@ -87,14 +87,13 @@ function SourcingTool() {
     return (
         <>
             <ThemeProvider theme={theme}>
-                <div className="Page">
+                <div className="Page-2">
                     <div id="Container">
-                        <Typography variant="h2">Welcome to Plexie's sourcing tool!</Typography>
+                        <Typography variant="h2" className="Prompt" id="Intro" style={{padding: "0", margin:"0", marginBottom:"2rem"}}>Welcome to Plexie's sourcing tool!</Typography>
                         <span id="ToolPrompt">
-                            <img src={plexie} id="PlexieImg" />
+                            <img src={plexie} id="PlexieImg-2" />
                             <div className="TextSpace" id="EmailPrompt">
                                 <Typography variant="h5">Let's help you find the right contact.</Typography>
-
                                 <div style={{ marginTop: "2rem" }}>
                                     <Input value={first} className="InputPrompt" placeholder="First Name" onChange={(event) => setFirst(event.target.value)}></Input>
                                     <Input value={last} className="InputPrompt" placeholder="Last Name" onChange={(event) => setLast(event.target.value)}></Input>

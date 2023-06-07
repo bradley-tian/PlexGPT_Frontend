@@ -84,7 +84,7 @@ body {
 
   .Plexie {
     display: flex;
-    margin-bottom: 50px;
+    margin-bottom: 2rem;
   }
 
   .InputPrompt {
@@ -102,8 +102,8 @@ body {
   }
 
   #PlexieImg {
-    width: 20%;
-    height: 100%;
+    width: 17%;
+    height: 65%;
     margin-right: 5rem;
   }
 

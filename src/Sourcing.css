@@ -10,7 +10,7 @@ body {
   overflow-y: scroll;
 }
 
-.Page {
+.Page-2 {
   top: 0;
   left: 0;
   position: absolute;
@@ -20,16 +20,17 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("./assets/Heart_Background.png");
+  background-image: url("./assets/heart-background-2.png");
+  align-items: center;
 }
 
 #ToolPrompt {
-  width: max-content;
+  width: 100%;
   height: max-content;
   display: inline-flex;
 }
 
-#PlexieImg {
+#PlexieImg-2 {
   width: 35vh;
   height: 50vh;
   margin-right: 5rem;
@@ -37,6 +38,9 @@ body {
 
 #Container {
   margin: 3rem;
+  padding-left: 13vw;
+  padding-right: 13vw;
+  justify-content: center;
 }
 
 .TextSpace {
@@ -45,7 +49,15 @@ body {
   opacity: 1;
   padding: 1.5rem;
   margin-top: 2rem;
-  max-width: 35vw;
+  width: 100rem;
+}
+
+.Prompt {
+  height: min-content;
+  border-radius: 1rem;
+  background-color: #FFFDFA;
+  opacity: 0.85;
+  margin-bottom: 1rem;
 }
 
 #EmailPrompt {
@@ -86,7 +98,7 @@ body {
     width: 40%;
     margin-right: 10%;
   }
-  
+
   #PromptAction {
     display: flex;
     margin-right: 1rem;
@@ -94,10 +106,6 @@ body {
 
   .Interact {
     width: 62%;
-  }
-
-  #Intro {
-    margin-left: 25px;
   }
 }
 
