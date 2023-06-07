@@ -10,7 +10,7 @@ import PlexieRegular from "../assets/PRegular.png";
 import PlexieThinking from "../assets/PThinking.png";
 import PlexieResponding from "../assets/PRespond.png";
 import PlexieError from "../assets/PError.png";
-import PlexieCool from "../assets/PCool.png";
+import PlexieCold from "../assets/PCold.png";
 
 function PlexGPT() {
 
@@ -76,7 +76,7 @@ function PlexGPT() {
                     if (data.indicator < 0.9) {
                         setPlexie(PlexieResponding);
                     } else {
-                        setPlexie(PlexieCool);
+                        setPlexie(PlexieCold);
                     }
                 }
                 let trimmed = [" ", ",", "?"].includes(data.answer.content.charAt(0)) ? data.answer.content.slice(2) : data.answer.content
