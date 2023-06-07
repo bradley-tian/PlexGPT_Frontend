@@ -74,8 +74,7 @@ function PlexGPT() {
                 } else {
                     setPlexie(PlexieResponding);
                 }
-                let trimmed = data.answer.content.charAt(0) === '?' ? data.answer.content.slice(3) : data.answer.content
-                trimmed = data.answer.content.charAt(0) === ',' ? data.answer.content.slice(2) : data.answer.content
+                let trimmed = data.answer.content.charAt(0) in [" ", ",", "?"] ? data.answer.content.slice(2) : data.answer.content
                 setResponse(trimmed)
                 setProcessing(false);
             })
