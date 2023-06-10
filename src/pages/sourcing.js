@@ -32,6 +32,8 @@ function SourcingTool() {
     const [domain, setDomain] = useState("");
     const [processing, setProcessing] = useState(false);
     const [response, setResponse] = useState([]);
+    const [resString, setResString] = useState([]);
+    const [copyMsg, setCopyMsg] = useState("Copy");
     const errorMsg = "I'm sorry,  I wasn't able to find any contact information about this person.";
     const navigate = useNavigate();
     let searched = false;
@@ -43,6 +45,7 @@ function SourcingTool() {
 
         setProcessing(true);
         setResponse([]);
+        setCopyMsg("Copy");
 
         let URL = `${process.env.REACT_APP_BACKEND_URL}/sourcing`
         setPlexie(PlexieThinking);
@@ -69,6 +72,12 @@ function SourcingTool() {
                 }
                 else {
                     setResponse(data);
+                    let res = "";
+                    for (let email in data) {
+                        res += data[email];
+                        res += '\n';
+                    }
+                    setResString(res);
                     setProcessing(false);
                     setPlexie(PlexieResponding)
                     searched = true;
@@ -89,7 +98,7 @@ function SourcingTool() {
             <ThemeProvider theme={theme}>
                 <div className="Page-2">
                     <div id="Container">
-                        <Typography variant="h2" className="Prompt" id="Intro" style={{padding: "0", margin:"0", marginBottom:"2rem"}}>Welcome to Plexie's sourcing tool!</Typography>
+                        <Typography variant="h2" className="Prompt" id="Intro" style={{ padding: "0", margin: "0", marginBottom: "2rem" }}>Welcome to Plexie's sourcing tool!</Typography>
                         <span id="ToolPrompt">
                             <img src={plexie} id="PlexieImg-2" />
                             <div className="TextSpace" id="EmailPrompt">
@@ -119,8 +128,21 @@ function SourcingTool() {
                                     </Button>
                                     {processing ? <Typography variant="p">Please wait...</Typography> : <></>}
                                 </div>
-                                {response[0] === errorMsg || response.length === 0 ? <></> : <Typography variant="h6">Here are some possibly valid email addresses:<br /></Typography>}
-                                {Array.isArray(response) && response.length !== 0 ? response.map((email) => <Typography variant="p">{email}<br /></Typography>) : <></>}
+                                <div style={{ display: "block", marginBottom: "10px"}}>
+                                    {response[0] === errorMsg || response.length === 0 ? <></> : <Typography variant="h6">Here are some possibly valid email addresses:<br /></Typography>}
+                                    {Array.isArray(response) && response.length !== 0 ? response.map((email) => <Typography variant="p">{email}<br /></Typography>) : <></>}
+                                    {Array.isArray(response) && response.length !== 0 ? <Button
+                                        variant="contained"
+                                        color="neutral"
+                                        fontWeight="Bold"
+                                        style={{ marginTop: '1rem', marginRight: '1rem' }}
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(resString);
+                                            setCopyMsg("Copied")
+                                        }}>
+                                        {copyMsg} to clipboard
+                                    </Button> : <></>}
+                                </div>
                             </div>
                         </span>
                     </div>
